@@ -8,19 +8,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: yarn install
 
-    - name: ESLint Check
-      run: npx eslint --ext .js,.ts,.jsx,.tsx ./src
+      - name: ESLint Check
+        run: npx eslint src --ext .js,.ts,.jsx,.tsx
 
-    - name: Build React app
-      run: npm run build
+      - name: Build React app
+        run: yarn run build
