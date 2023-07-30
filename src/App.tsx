@@ -1,31 +1,30 @@
-import './App.css';
-
 import * as React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import { MantineProvider } from '@mantine/core';
+
+import routes from './pages';
 
 function App() {
-  const [count, setCount] = React.useState(0);
+  const router = createBrowserRouter(routes);
 
   return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button type="button" onClick={() => setCount((prev) => prev + 1)}>
-          count is
-          {' '}
-          {count}
-        </button>
-        <p>
-          Edit
-          {' '}
-          <code>src/App.tsx</code>
-          {' '}
-          and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <React.Suspense fallback={<>a</>}>
+      <MantineProvider
+        theme={{
+          globalStyles: () => ({
+            'html, body, #root': {
+              height: '100%',
+            },
+          }),
+          fontFamily: "'Noto Sans Thai', sans-serif",
+        }}
+        withGlobalStyles
+        withNormalizeCSS
+      >
+        <RouterProvider router={router} />
+      </MantineProvider>
+    </React.Suspense>
   );
 }
 
