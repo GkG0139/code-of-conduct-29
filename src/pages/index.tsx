@@ -1,11 +1,17 @@
 import * as React from 'react';
 
+const Nav = React.lazy(() => import('../components/Nav'));
 const CheckColor = React.lazy(() => import('./check-color'));
 
 const routes = [
   {
-    path: 'check_color',
-    element: <CheckColor />,
+    element: <Nav />,
+    children: [
+      {
+        path: 'check_color',
+        element: <CheckColor />,
+      },
+    ],
   },
 ];
 
