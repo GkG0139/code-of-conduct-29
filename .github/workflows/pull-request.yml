@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  eslint-build-run:
+    name: ESLint, Build, and Run
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: ESLint Check
+        run: npx eslint src --ext .js,.ts,.jsx,.tsx
+
+      - name: Build React app
+        run: yarn run build
