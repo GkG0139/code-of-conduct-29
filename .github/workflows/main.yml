@@ -20,7 +20,7 @@ jobs:
       run: npm install
 
     - name: ESLint Check
-      run: npx eslint --ext .js,.ts,.jsx,.tsx
+      run: npx eslint --ext .js,.ts,.jsx,.tsx ./src
 
     - name: Build React app
       run: npm run build
