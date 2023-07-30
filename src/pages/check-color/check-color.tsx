@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import {
   Button, Center, Stack, TextInput, Title,
 } from '@mantine/core';
