@@ -36,6 +36,10 @@ function CheckColor() {
     }
   };
 
+  const handleClick = () => {
+    handleSearch();
+  };
+
   return (
     <Center maw="100%" h="100%" mx="auto">
       <Stack spacing="lg" align="center">
@@ -50,7 +54,7 @@ function CheckColor() {
           value={id}
           onChange={(event) => setId(event.currentTarget.value)}
         />
-        <Button variant="outline" radius="lg" size="lg" onClick={() => handleSearch()}>
+        <Button variant="outline" radius="lg" size="lg" onClick={handleClick}>
           ตรวจสอบ
         </Button>
         {data ? <SearchResult data={data} /> : <div>No data found</div>}
