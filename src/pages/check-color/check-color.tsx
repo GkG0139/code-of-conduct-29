@@ -24,6 +24,11 @@ function CheckColor() {
 
     try {
       const response = await axios.get(url);
+      if (!response.data && response.data.length === 0) {
+        // eslint-disable-next-line no-console
+        console.error('No data received');
+        return;
+      }
       setData(response.data[0]);
     } catch (error) {
       throw new Error('Status 404 Data not found');
@@ -46,7 +51,7 @@ function CheckColor() {
         <Button variant="outline" radius="lg" size="lg" onClick={handleSearch}>
           ตรวจสอบ
         </Button>
-        {data && <SearchResult data={data} />}
+        {data ? <SearchResult data={data} /> : <div>No data found</div>}
       </Stack>
     </Center>
   );
