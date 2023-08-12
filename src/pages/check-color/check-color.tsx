@@ -1,8 +1,34 @@
 import {
   Button, Center, Stack, TextInput, Title,
 } from '@mantine/core';
+import { useState } from 'react';
+import axios from 'axios';
+import SearchResult from '../../components/SearchResult';
+
+interface Student {
+  id: string;
+  fullname: string;
+  firstname: string;
+  lastname: string;
+  nickname: string;
+  color: string;
+  colorCode: string;
+}
 
 function CheckColor() {
+  const [data, setData] = useState<Student | null>(null);
+  const [id, setId] = useState(''); // State for the student ID
+
+  const handleSearch = async () => {
+    const url = `http://localhost:3000/api/student/${id}`;
+
+    try {
+      const response = await axios.get(url);
+      setData(response.data[0]);
+    } catch (error) {
+      throw new Error('Status 404 Data not found');
+    }
+  };
   return (
     <Center maw="100%" h="100%" mx="auto">
       <Stack spacing="lg" align="center">
@@ -14,10 +40,13 @@ function CheckColor() {
           radius="md"
           size="lg"
           withAsterisk
+          value={id}
+          onChange={(event) => setId(event.currentTarget.value)}
         />
-        <Button variant="outline" radius="lg" size="lg">
+        <Button variant="outline" radius="lg" size="lg" onClick={handleSearch}>
           ตรวจสอบ
         </Button>
+        {data && <SearchResult data={data} />}
       </Stack>
     </Center>
   );
