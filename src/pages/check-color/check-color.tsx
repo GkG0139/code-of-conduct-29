@@ -35,6 +35,7 @@ function CheckColor() {
       console.error(error);
     }
   };
+
   return (
     <Center maw="100%" h="100%" mx="auto">
       <Stack spacing="lg" align="center">
