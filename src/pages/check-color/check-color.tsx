@@ -31,7 +31,8 @@ function CheckColor() {
       }
       setData(response.data[0]);
     } catch (error) {
-      throw new Error('Status 404 Data not found');
+      // eslint-disable-next-line no-console
+      console.error(error);
     }
   };
   return (
