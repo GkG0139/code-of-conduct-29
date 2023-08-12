@@ -23,8 +23,8 @@ function CheckColor() {
     const url = `http://localhost:3000/api/student/${id}`;
 
     try {
-      const response = await axios.get(url);
-      if (!response.data && response.data.length === 0) {
+      const response = await axios.get<Student[]>(url);
+      if (!response.data) {
         // eslint-disable-next-line no-console
         console.error('No data received');
         return;
