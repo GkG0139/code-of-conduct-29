@@ -50,7 +50,7 @@ function CheckColor() {
           value={id}
           onChange={(event) => setId(event.currentTarget.value)}
         />
-        <Button variant="outline" radius="lg" size="lg" onClick={handleSearch}>
+        <Button variant="outline" radius="lg" size="lg" onClick={() => handleSearch()}>
           ตรวจสอบ
         </Button>
         {data ? <SearchResult data={data} /> : <div>No data found</div>}
