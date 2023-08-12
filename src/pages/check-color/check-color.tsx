@@ -37,7 +37,8 @@ function CheckColor() {
   };
 
   const handleClick = () => {
-    handleSearch().then();
+    // eslint-disable-next-line no-void
+    void handleSearch();
   };
 
   return (
