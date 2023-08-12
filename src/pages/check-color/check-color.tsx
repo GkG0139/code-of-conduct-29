@@ -37,7 +37,7 @@ function CheckColor() {
   };
 
   const handleClick = () => {
-    handleSearch();
+    handleSearch().then();
   };
 
   return (
