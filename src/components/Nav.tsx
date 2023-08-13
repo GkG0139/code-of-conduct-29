@@ -11,6 +11,7 @@ const NavContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  font-size: 1.5rem;
 `;
 
 const StyledList = styled(List)`
