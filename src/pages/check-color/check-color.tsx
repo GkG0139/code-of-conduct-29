@@ -12,7 +12,7 @@ function CheckColor() {
   const [data, setData] = useState<Student | null>(null);
   const [id, setId] = useState(''); // State for the student ID
 
-  const handleSearch = React.useCallback(async (): Promise<void> => {
+  const handleSearch = React.useCallback<() => Promise<void>>(async () => {
     const url = `http://localhost:3000/api/student/${id}`;
 
     try {
