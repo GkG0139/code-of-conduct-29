@@ -19,9 +19,6 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Clear cache
-        run: yarn cache clean
-
       - name: Install dependencies
         run: yarn install
 
