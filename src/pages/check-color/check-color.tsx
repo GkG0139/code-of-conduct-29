@@ -5,7 +5,7 @@ import {
   Button, Center, Stack, TextInput, Title,
 } from '@mantine/core';
 
-import SearchResult from '../../components/SearchResult';
+import SearchResult from '../../components/search-result';
 import { Student } from '../../types';
 
 function CheckColor() {
