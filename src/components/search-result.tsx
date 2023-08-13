@@ -15,7 +15,7 @@ function SearchResult({ data }: SearchResultProps) {
       {data && (
         <div>
           {getEntries instanceof Array
-            && getEntries.map(([key, value]) => (
+            && getEntries.map(([key, value]: [string, string]) => (
               <p key={key}>
                 {key}
                 {' '}
