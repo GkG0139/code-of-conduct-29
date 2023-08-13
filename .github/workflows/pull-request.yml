@@ -23,7 +23,7 @@ jobs:
         run: yarn install
 
       - name: ESLint Check
-        run: npx eslint src --ext .js,.ts,.jsx,.tsx
+        run: yarn lint
 
       - name: Build React app
         run: yarn run build
