@@ -1,28 +1,27 @@
-interface Student {
-  id: string;
-  fullname: string;
-  firstname: string;
-  lastname: string;
-  nickname: string;
-  color: string;
-  colorCode: string;
-}
+import { Student } from '../types';
 
 interface SearchResultProps {
   data: Student | null;
 }
 
+type Entries<T> = {
+  [K in keyof T]: [K, T[K]];
+}[keyof T][];
+
 function SearchResult({ data }: SearchResultProps) {
+  const getEntries = <T extends object>(obj: T) => Object.entries(obj) as Entries<T>;
   return (
     <div>
       {data && (
         <div>
-          <p>{data.fullname}</p>
-          <p>{data.firstname}</p>
-          <p>{data.lastname}</p>
-          <p>{data.nickname}</p>
-          <p>{data.color}</p>
-          <p>{data.colorCode}</p>
+          {getEntries instanceof Array
+            && getEntries.map(({ key, value }) => (
+              <p key={key}>
+                {key}
+                {' '}
+                {value}
+              </p>
+            ))}
         </div>
       )}
     </div>

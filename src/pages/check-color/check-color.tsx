@@ -1,45 +1,30 @@
+import axios from 'axios';
+import React, { useState } from 'react';
+
 import {
   Button, Center, Stack, TextInput, Title,
 } from '@mantine/core';
-import { useState } from 'react';
-import axios from 'axios';
-import SearchResult from '../../components/SearchResult';
 
-interface Student {
-  id: string;
-  fullname: string;
-  firstname: string;
-  lastname: string;
-  nickname: string;
-  color: string;
-  colorCode: string;
-}
+import SearchResult from '../../components/SearchResult';
+import { Student } from '../../types';
 
 function CheckColor() {
   const [data, setData] = useState<Student | null>(null);
   const [id, setId] = useState(''); // State for the student ID
 
-  const handleSearch = async () => {
+  const handleSearch = React.useCallback(async () => {
     const url = `http://localhost:3000/api/student/${id}`;
 
     try {
       const response = await axios.get<Student[]>(url);
-      if (!response.data) {
-        // eslint-disable-next-line no-console
-        console.error('No data received');
-        return;
-      }
-      setData(response.data[0]);
+      // eslint-disable-next-line no-console
+      if (!response.data) console.error('No data received');
+      else setData(response.data[0]);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);
     }
-  };
-
-  const handleClick = () => {
-    // eslint-disable-next-line no-void
-    void handleSearch();
-  };
+  }, [id]);
 
   return (
     <Center maw="100%" h="100%" mx="auto">
@@ -55,7 +40,7 @@ function CheckColor() {
           value={id}
           onChange={(event) => setId(event.currentTarget.value)}
         />
-        <Button variant="outline" radius="lg" size="lg" onClick={handleClick}>
+        <Button variant="outline" radius="lg" size="lg" onClick={handleSearch}>
           ตรวจสอบ
         </Button>
         {data ? <SearchResult data={data} /> : <div>No data found</div>}
