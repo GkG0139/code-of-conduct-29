@@ -38,6 +38,9 @@ jobs:
         run: yarn list
         working-directory: frontend
 
+      - name: List files
+        run: ls
+
       - name: Install dependencies
         run: yarn install
         working-directory: frontend
