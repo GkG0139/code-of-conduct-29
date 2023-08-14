@@ -6,15 +6,13 @@ on:
       - main
 
 jobs:
-  eslint-build-run:
+  frontend-eslint-build-run:
     name: 'Frontend: ESLint, Build, and Run'
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          path: frontend
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -35,20 +33,13 @@ jobs:
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
         name: List the state of node modules
         continue-on-error: true
-        run: yarn list
-        working-directory: frontend
-
-      - name: List files
-        run: ls
+        run: yarn --cwd frontend list
 
       - name: Install dependencies
-        run: yarn install
-        working-directory: frontend
+        run: yarn --cwd frontend install
 
       - name: ESLint Check
-        run: yarn lint
-        working-directory: frontend
+        run: yarn --cwd frontend lint
 
       - name: Build React app
-        run: yarn run build
-        working-directory: frontend
+        run: yarn --cwd frontend run build
