@@ -35,13 +35,13 @@ jobs:
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
         name: List the state of node modules
         continue-on-error: true
-        run: yarn --cwd frontend list
+        run: yarn --cwd ~/frontend list
 
       - name: Install dependencies
-        run: yarn --cwd frontend install
+        run: yarn --cwd ~/frontend install
 
       - name: ESLint Check
-        run: yarn --cwd frontend lint
+        run: yarn --cwd ~/frontend lint
 
       - name: Build React app
-        run: yarn --cwd frontend run build
+        run: yarn --cwd ~/frontend run build
