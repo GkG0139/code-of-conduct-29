@@ -1,7 +1,8 @@
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { Text, List, Menu } from '@mantine/core';
+import { Link, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import { Outlet, Link } from 'react-router-dom';
+
+import { List, Menu, Text } from '@mantine/core';
 
 const NavContainer = styled.div`
   padding: 2rem;
