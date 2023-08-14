@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { MantineProvider } from '@mantine/core';
+import { LoadingOverlay, MantineProvider } from '@mantine/core';
 
 import routes from './pages';
+import DiscordButton from './components/discord-button';
 
 function App() {
   const router = createBrowserRouter(routes);
 
   return (
-    <React.Suspense fallback={<>a</>}>
+    <React.Suspense fallback={<LoadingOverlay overlayBlur={3} visible />}>
       <MantineProvider
         theme={{
           globalStyles: () => ({
@@ -23,6 +24,7 @@ function App() {
         withNormalizeCSS
       >
         <RouterProvider router={router} />
+        <DiscordButton />
       </MantineProvider>
     </React.Suspense>
   );
