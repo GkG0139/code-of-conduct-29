@@ -3,11 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://GkG0139.github.io/code-of-conduct-29",
+  "homepage": "https://gkg0139.github.io/code-of-conduct-29/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "lint": "eslint . --ext ts,tsx",
     "preview": "vite preview"
   },
