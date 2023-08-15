@@ -32,11 +32,12 @@ function CheckColor() {
         setData(null);
         // eslint-disable-next-line no-console
         console.error('No data received');
-      } else
+      } else {
         setData({
           color: getColorByColorCode(response.data.backgroundColor),
           colorCode: response.data.backgroundColor,
         });
+      }
     } catch (error) {
       setData(null);
       // eslint-disable-next-line no-console
