@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/code-of-conduct-29/"
+  base: '/code-of-conduct-29/',
 });
