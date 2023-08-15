@@ -8,7 +8,7 @@ const routes = [
     element: <Nav />,
     children: [
       {
-        path: 'check_color',
+        path: '/',
         element: <CheckColor />,
       },
     ],
