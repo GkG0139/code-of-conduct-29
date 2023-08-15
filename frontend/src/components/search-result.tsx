@@ -20,7 +20,7 @@ function SearchResult({ data }: SearchResultProps) {
       >
         Group Colors
       </Title>
-      <img src={TurtleImage} aria-hidden />
+      <img src={TurtleImage} aria-hidden alt="Turtle Image" />
       <Title
         color={data?.colorCode ?? 'white'}
         order={3}
