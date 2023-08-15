@@ -17,7 +17,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '16' # Update the Node.js version if needed
 
       - name: Cache node modules
         id: yarn-cache
@@ -37,11 +37,11 @@ jobs:
       - name: Build React app
         run: yarn --cwd frontend run build
 
-      - name: Uploading production-ready build files
+      - name: Upload production-ready build files
         uses: actions/upload-artifact@v3
         with:
           name: production-files
-          path: ./frontend/build
+          path: frontend/build
 
   deploy:
     name: Deploy
@@ -54,10 +54,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: production-files
-          path: ./frontend/build
+          path: frontend/build
 
       - name: Deploying to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./frontend/build
