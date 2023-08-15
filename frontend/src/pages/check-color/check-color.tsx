@@ -13,25 +13,31 @@ import {
 import UnderSeaBackgroundImage from '../../assets/images/background.png';
 import MermaidImage from '../../assets/images/mermaid.png';
 import SearchResult from '../../components/search-result';
-import { Student } from '../../types';
+import { Data } from '../../types';
 import StyledMermaidImage from '../../components/mermiad-image';
+import getColorByColorCode from '../../utils';
 
 function CheckColor() {
-  const [data, setData] = useState<Student | null | undefined>(undefined);
+  const [data, setData] = useState<Data | null | undefined>(undefined);
   const [isLoading, setLoading] = useState(false);
   const [id, setId] = useState(''); // State for the student ID
 
   const handleSearch = React.useCallback(async () => {
-    const url = `http://localhost:3000/api/student/${id}`;
+    const url = `https://script.google.com/macros/s/AKfycbxBMhF9LQ71WRAuAbevIz4R_ja8AFoq-wtEHp_wfFLvGQCbO6G-J6KCp_3_tr9prBA/exec?searchText=${id}`;
 
     try {
       setLoading(true);
-      const response = await axios.get<Student[]>(url);
+      const response = await axios.get<{ backgroundColor: string }>(url);
       if (!response.data) {
         setData(null);
         // eslint-disable-next-line no-console
         console.error('No data received');
-      } else setData(response.data[0]);
+      } else {
+        setData({
+          color: getColorByColorCode(response.data.backgroundColor),
+          colorCode: response.data.backgroundColor,
+        });
+      }
     } catch (error) {
       setData(null);
       // eslint-disable-next-line no-console
@@ -48,8 +54,7 @@ function CheckColor() {
         <StyledMermaidImage src={MermaidImage} alt="Mermiad" height={500} />
       );
     }
-    if ('id' in data) return <SearchResult data={data} />;
-    return null;
+    return <SearchResult data={data} />;
   };
 
   return (

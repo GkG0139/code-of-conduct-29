@@ -1,30 +1,37 @@
-import { Student } from '../types';
+import { Box, Title } from '@mantine/core';
+
+import TurtleImage from '../assets/images/turtle.png';
+import { Data } from '../types';
 
 interface SearchResultProps {
-  data: Student | null;
+  data: Data | null;
 }
 
-type Entries<T> = {
-  [K in keyof T]: [K, T[K]];
-}[keyof T][];
-
 function SearchResult({ data }: SearchResultProps) {
-  const getEntries = <T extends object>(obj: T) => Object.entries(obj) as Entries<T>;
   return (
-    <div>
-      {data && (
-        <div>
-          {getEntries instanceof Array
-            && getEntries.map(([key, value]: [string, string]) => (
-              <p key={key}>
-                {key}
-                {' '}
-                {value}
-              </p>
-            ))}
-        </div>
-      )}
-    </div>
+    <Box bg="rgba(255, 255, 255, 0.85)" p="xl" sx={{ borderRadius: '20px' }}>
+      <Title
+        color="#3A3A3A"
+        order={3}
+        weight={800}
+        align="center"
+        size="h2"
+        sx={{ textShadow: '0px 4px 5px rgba(0, 0, 0, 0.25)' }}
+      >
+        Group Colors
+      </Title>
+      <img src={TurtleImage} aria-hidden alt="Turtle Image" />
+      <Title
+        color={data?.colorCode ?? 'white'}
+        order={3}
+        weight={800}
+        align="center"
+        size="4rem"
+        sx={{ textShadow: '0px 4px 5px rgba(0, 0, 0, 0.25)' }}
+      >
+        {data?.color}
+      </Title>
+    </Box>
   );
 }
 

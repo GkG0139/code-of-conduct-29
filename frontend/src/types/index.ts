@@ -1,9 +1,4 @@
-export interface Student {
-  id: string;
-  fullname: string;
-  firstname: string;
-  lastname: string;
-  nickname: string;
+export interface Data {
   color: string;
   colorCode: string;
 }
