@@ -1,14 +1,13 @@
 import * as React from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { LoadingOverlay, MantineProvider } from '@mantine/core';
 
-import routes from './pages';
 import DiscordButton from './components/discord-button';
 
-function App() {
-  const router = createBrowserRouter(routes);
+const Nav = React.lazy(() => import('./components/Nav'));
+const CheckColor = React.lazy(() => import('./pages/check-color'));
 
+function App() {
   return (
     <React.Suspense fallback={<LoadingOverlay overlayBlur={3} visible />}>
       <MantineProvider
@@ -23,7 +22,9 @@ function App() {
         withGlobalStyles
         withNormalizeCSS
       >
-        <RouterProvider router={router} />
+        <Nav>
+          <CheckColor />
+        </Nav>
         <DiscordButton />
       </MantineProvider>
     </React.Suspense>

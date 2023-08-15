@@ -1,5 +1,4 @@
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { Link, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { List, Menu, Text } from '@mantine/core';
@@ -24,7 +23,7 @@ const StyledList = styled(List)`
   }
 `;
 
-const StyleLink = styled(Link)`
+const StyleLink = styled.a`
   text-decoration: none;
   color: black;
 `;
@@ -35,20 +34,20 @@ const HamburgerContainer = styled('div')`
   }
 `;
 
-function Nav() {
+function Nav({ children }: { children: React.ReactNode }) {
   return (
     <>
       <NavContainer>
         <Text>Code of Conduct</Text>
         <StyledList>
           <List.Item>
-            <StyleLink to="/home">Home</StyleLink>
+            <StyleLink href="/home">Home</StyleLink>
           </List.Item>
           <List.Item>
-            <StyleLink to="/about">About Us</StyleLink>
+            <StyleLink href="/about">About Us</StyleLink>
           </List.Item>
           <List.Item>
-            <StyleLink to="/schedule">Schedule</StyleLink>
+            <StyleLink href="/schedule">Schedule</StyleLink>
           </List.Item>
         </StyledList>
         <Menu>
@@ -60,18 +59,18 @@ function Nav() {
 
           <Menu.Dropdown>
             <Menu.Item>
-              <StyleLink to="/home">Home</StyleLink>
+              <StyleLink href="/home">Home</StyleLink>
             </Menu.Item>
             <Menu.Item>
-              <StyleLink to="/about">About Us</StyleLink>
+              <StyleLink href="/about">About Us</StyleLink>
             </Menu.Item>
             <Menu.Item>
-              <StyleLink to="/schedule">Schedule</StyleLink>
+              <StyleLink href="/schedule">Schedule</StyleLink>
             </Menu.Item>
           </Menu.Dropdown>
         </Menu>
       </NavContainer>
-      <Outlet />
+      {children}
     </>
   );
 }
