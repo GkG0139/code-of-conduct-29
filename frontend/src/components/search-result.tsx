@@ -35,7 +35,7 @@ const StyleTitle1 = styled(Title)`
 
 const StyleTitle2 = styled(Title)`
   color: #313866;
-  font-size: 3rem;
+  font-size: 2rem;
 `;
 
 const ResponsiveImage = styled.img`

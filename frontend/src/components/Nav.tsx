@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { List } from '@mantine/core';
-
 const NavContainer = styled.div`
   // padding: 2rem;
   padding: 1rem 2rem;
