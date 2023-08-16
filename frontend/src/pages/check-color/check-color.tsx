@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 import {
   BackgroundImage,
@@ -16,6 +17,54 @@ import SearchResult from '../../components/search-result';
 import { Data } from '../../types';
 import StyledMermaidImage from '../../components/mermiad-image';
 import getColorByColorCode from '../../utils';
+
+const StyledTitle = styled(Title)`
+  color: #313866;
+  font-size: 2rem;
+  margin-top: 2rem; 
+
+  @media (max-width: 480px) {
+    margin-top: 5rem; 
+  }
+
+  @media (min-width: 481px) {
+    font-size: 3rem;
+    margin-top: 15rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 4rem;
+    margin-top: 3rem;
+  }
+`;
+
+const StyledTextInput = styled(TextInput)`
+  width: 100%;
+  max-width: 50vw;
+  color: white;
+
+  input {
+    background-color: transparent;
+    border-color: white;
+    border-radius: 1.5rem;
+    color: white;
+    transition: border-color 0.3s;
+  }
+
+  input:focus {
+    border-color: white;
+    outline: none;
+  }
+
+  input::placeholder {
+    color: white;
+    opacity: 0.5; 
+  }
+
+  @media (min-width: 768px) {
+    max-width: 30vw;
+  }
+`;
 
 function CheckColor() {
   const [data, setData] = useState<Data | null | undefined>(undefined);
@@ -66,12 +115,11 @@ function CheckColor() {
     >
       <Center maw="100%" h="100%" mx="auto">
         <Stack spacing="lg" align="center" maw="80vw">
-          <Title order={2} size="h1" align="center">
+          <StyledTitle order={2} size="h1" align="center">
             ตรวจสอบสีของสายรหัสคุณ
-          </Title>
-          <TextInput
+          </StyledTitle>
+          <StyledTextInput
             placeholder="รหัสนักศึกษา"
-            radius="md"
             size="lg"
             withAsterisk
             value={id}
