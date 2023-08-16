@@ -21,15 +21,15 @@ import getColorByColorCode from '../../utils';
 const StyledTitle = styled(Title)`
   color: #313866;
   font-size: 2rem;
-  margin-top: 2rem; 
+  margin-top: 2rem;
 
   @media (max-width: 480px) {
-    margin-top: 5rem; 
+    margin-top: 5rem;
   }
 
   @media (min-width: 481px) {
     font-size: 3rem;
-    margin-top: 15rem;
+    margin-top: 4rem;
   }
 
   @media (min-width: 1024px) {
@@ -58,7 +58,7 @@ const StyledTextInput = styled(TextInput)`
 
   input::placeholder {
     color: white;
-    opacity: 0.5; 
+    opacity: 0.5;
   }
 
   @media (min-width: 768px) {
@@ -77,19 +77,49 @@ function CheckColor() {
     try {
       setLoading(true);
       const response = await axios.get<{ backgroundColor: string }>(url);
+
       if (!response.data) {
         setData(null);
-        // eslint-disable-next-line no-console
         console.error('No data received');
       } else {
-        setData({
-          color: getColorByColorCode(response.data.backgroundColor),
-          colorCode: response.data.backgroundColor,
-        });
+        const colorCode = response.data.backgroundColor;
+        let color;
+
+        switch (colorCode) {
+          case '#f44a4a':
+          case '#ff6d6d':
+            color = 'Red';
+            break;
+          case '#00b050':
+          case '#92d050':
+            color = 'Green';
+            break;
+          case '#0070c0':
+          case '#00b0f0':
+            color = 'Blue';
+            break;
+          case '#ffff33':
+          case '#f5ff79':
+            color = 'Yellow';
+            break;
+          case '#f6b26b':
+          case '#ffe699':
+            color = 'Orange';
+            break;
+          case '#ff99f8':
+          case '#ffd9fc':
+            color = 'Pink';
+            break;
+          default:
+            color = 'Undefined';
+            console.error('Invalid color code');
+            break;
+        }
+
+        setData({ color, colorCode });
       }
     } catch (error) {
       setData(null);
-      // eslint-disable-next-line no-console
       console.error(error);
     } finally {
       setLoading(false);
@@ -116,7 +146,7 @@ function CheckColor() {
       <Center maw="100%" h="100%" mx="auto">
         <Stack spacing="lg" align="center" maw="80vw">
           <StyledTitle order={2} size="h1" align="center">
-            ตรวจสอบสีของสายรหัสคุณ
+            ตรวจสอบสีของสายรหัส
           </StyledTitle>
           <StyledTextInput
             placeholder="รหัสนักศึกษา"

@@ -15,9 +15,7 @@ const Container = styled.div`
   align-items: center;
   gap: 1rem;
   width: 100%;
-  max-width: 30rem;
-  margin: 0 5rem;;
-
+  height: auto;
   @media (max-width: 820px) {
     flex-direction: column;
     padding: 1rem;
@@ -30,7 +28,7 @@ const Container = styled.div`
 `;
 
 const ResponsiveImage = styled.img`
-  max-width: 80%;
+  max-width: 20rem;
   width: auto;
   height: auto;
 

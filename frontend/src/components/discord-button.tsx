@@ -1,22 +1,39 @@
 import { Box } from '@mantine/core';
 import { styled } from 'styled-components';
 
-const DiscordBtn = styled.a`
+const DiscordBtn = styled.button`
   padding-left: 10px;
   position: fixed;
   bottom: 20px;
   left: 20px;
   cursor: pointer;
   transition: transform 0.2s;
-  
+  border: none;
+  background: none;
+
+  @media (max-width: 767px) {
+    padding: 5px;
+    bottom: 10px;
+    left: 10px;
+
+    svg {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
   &:hover {
-    transform: scale(1.1); /* Apply a scale effect on hover */
+    transform: scale(1.1);
   }
 `;
 
 function DiscordButton() {
+  const redirectToDiscord = () => {
+    window.location.href = 'https://discord.gg/5UxcbEjvb7';
+  };
+
   return (
-    <DiscordBtn href="https://discord.gg/5UxcbEjvb7" target="_blank" rel="noopener noreferrer">
+    <DiscordBtn onClick={redirectToDiscord}>
       <Box>
         <svg
           xmlns="http://www.w3.org/2000/svg"
