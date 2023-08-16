@@ -1,7 +1,6 @@
-import { RxHamburgerMenu } from 'react-icons/rx';
 import styled from 'styled-components';
 
-import { List, Menu, Text } from '@mantine/core';
+import { List } from '@mantine/core';
 
 const NavContainer = styled.div`
   // padding: 2rem;
@@ -13,26 +12,6 @@ const NavContainer = styled.div`
   align-items: top;
   width: 100%;
   font-size: 1.5rem;
-`;
-
-const StyledList = styled(List)`
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-const StyleLink = styled.a`
-  text-decoration: none;
-  color: black;
-`;
-
-const HamburgerContainer = styled('div')`
-  @media (min-width: 768px) {
-    display: none;
-  }
 `;
 
 const LogoImage = styled.img`
@@ -62,7 +41,6 @@ const LogoImage = styled.img`
     max-width: 20vw;
   }
 `;
-
 
 const FacultyLogo = styled.img`
   max-height: 3vw;
@@ -101,37 +79,6 @@ function Nav({ children }: { children: React.ReactNode }) {
         <LogoImage src="../../public/logo.png" />
         <FacultyLogo src="../../public/sitlogo.png" />
         <FacultyLogoShort src="../../public/sitlogo_short.png" />
-        {/* <Text>Code of Conduct</Text>
-        <StyledList>
-          <List.Item>
-            <StyleLink href="/home">Home</StyleLink>
-          </List.Item>
-          <List.Item>
-            <StyleLink href="/about">About Us</StyleLink>
-          </List.Item>
-          <List.Item>
-            <StyleLink href="/schedule">Schedule</StyleLink>
-          </List.Item>
-        </StyledList>
-        <Menu>
-          <Menu.Target>
-            <HamburgerContainer>
-              <RxHamburgerMenu />
-            </HamburgerContainer>
-          </Menu.Target>
-
-          <Menu.Dropdown>
-            <Menu.Item>
-              <StyleLink href="/home">Home</StyleLink>
-            </Menu.Item>
-            <Menu.Item>
-              <StyleLink href="/about">About Us</StyleLink>
-            </Menu.Item>
-            <Menu.Item>
-              <StyleLink href="/schedule">Schedule</StyleLink>
-            </Menu.Item>
-          </Menu.Dropdown>
-        </Menu> */}
       </NavContainer>
       {children}
     </>
