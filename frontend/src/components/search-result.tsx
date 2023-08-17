@@ -1,12 +1,12 @@
 import { Box, Title } from '@mantine/core';
 import styled from 'styled-components';
 import DefaultImage from '../assets/images/mermaid.png';
-import Red from '../assets/images/Red_Octopus.png';
-import Yellow from '../assets/images/Yellow_PufferFish.png';
-import Blue from '../assets/images/Blue_Dolphin.png';
-import Pink from '../assets/images/Pink_Axolotl.png';
-import Green from '../assets/images/Green_Turtle.png';
-import Orange from '../assets/images/Orange_ClownFish.png';
+import RubyTangle from '../assets/images/Red_Octopus.png';
+import LemonPuff from '../assets/images/Yellow_PufferFish.png';
+import WaveBlue from '../assets/images/Blue_Dolphin.png';
+import RosyLotl from '../assets/images/Pink_Axolotl.png';
+import JadyExplorer from '../assets/images/Green_Turtle.png';
+import SunnyFin from '../assets/images/Orange_ClownFish.png';
 import { Data } from '../types';
 
 const Container = styled.div`
@@ -48,7 +48,7 @@ const ResponsiveImage = styled.img`
   }
 
   @media (max-width: 767px) {
-    max-width: 100%;
+    max-width: 80%;
   }
 `;
 
@@ -60,12 +60,12 @@ interface SearchResultProps {
 }
 
 const colorToImageMap: ColorToImageMap = {
-  Red,
-  Yellow,
-  Blue,
-  Pink,
-  Green,
-  Orange,
+  RubyTangle,
+  LemonPuff,
+  WaveBlue,
+  RosyLotl,
+  JadyExplorer,
+  SunnyFin,
 };
 
 function SearchResult({ data }: SearchResultProps) {
@@ -81,7 +81,6 @@ function SearchResult({ data }: SearchResultProps) {
           order={3}
           weight={800}
           align="center"
-          size="h2"
           sx={{ textShadow: '0px 4px 5px rgba(0, 0, 0, 0.25)' }}
         >
           Group Colors
@@ -119,7 +118,7 @@ function SearchResult({ data }: SearchResultProps) {
           order={3}
           weight={800}
           align="center"
-          size="4rem"
+          size="3rem"
           sx={{ textShadow: '0px 4px 5px rgba(0, 0, 0, 0.25)' }}
         >
           {data?.color}

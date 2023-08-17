@@ -88,27 +88,27 @@ function CheckColor() {
         switch (colorCode) {
           case '#f44a4a':
           case '#ff6d6d':
-            color = 'Red';
+            color = 'RubyTangle';
             break;
           case '#00b050':
           case '#92d050':
-            color = 'Green';
+            color = 'JadyExplorer';
             break;
           case '#0070c0':
           case '#00b0f0':
-            color = 'Blue';
+            color = 'WaveBlue';
             break;
           case '#ffff33':
           case '#f5ff79':
-            color = 'Yellow';
+            color = 'LemonPuff';
             break;
           case '#f6b26b':
           case '#ffe699':
-            color = 'Orange';
+            color = 'SunnyFin';
             break;
           case '#ff99f8':
           case '#ffd9fc':
-            color = 'Pink';
+            color = 'RosyLotl';
             break;
           default:
             color = 'undefined';
@@ -157,6 +157,7 @@ function CheckColor() {
               withAsterisk
               value={id}
               onChange={(event) => setId(event.currentTarget.value)}
+              type="number"
             />
             <Button
               variant="outline"
