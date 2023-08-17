@@ -1,16 +1,108 @@
 import { Box, Title } from '@mantine/core';
-
-import TurtleImage from '../assets/images/turtle.png';
+import styled from 'styled-components';
+import DefaultImage from '../assets/images/mermaid.png';
+import RubyTangle from '../assets/images/Red_Octopus.png';
+import LemonPuff from '../assets/images/Yellow_PufferFish.png';
+import WaveBlue from '../assets/images/Blue_Dolphin.png';
+import RosyLotl from '../assets/images/Pink_Axolotl.png';
+import JadyExplorer from '../assets/images/Green_Turtle.png';
+import SunnyFin from '../assets/images/Orange_ClownFish.png';
 import { Data } from '../types';
 
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  height: auto;
+  @media (max-width: 820px) {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  @media (min-width: 821px) {
+    flex-direction: row;
+    padding: 1rem;
+  }
+`;
+
+const StyleTitle1 = styled(Title)`
+  color: #313866;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+`;
+
+const StyleTitle2 = styled(Title)`
+  color: #313866;
+  font-size: 2rem;
+`;
+
+const ResponsiveImage = styled.img`
+  max-width: 18rem;
+  width: auto;
+  height: auto;
+
+  @media (max-width: 1024px) {
+    max-width: 90%;
+  }
+
+  @media (max-width: 767px) {
+    max-width: 80%;
+  }
+`;
+
+interface ColorToImageMap {
+  [key: string]: string;
+}
 interface SearchResultProps {
   data: Data | null;
 }
 
+const colorToImageMap: ColorToImageMap = {
+  RubyTangle,
+  LemonPuff,
+  WaveBlue,
+  RosyLotl,
+  JadyExplorer,
+  SunnyFin,
+};
+
 function SearchResult({ data }: SearchResultProps) {
+  const color = data?.color;
+  const colorImageSrc = color
+    ? colorToImageMap[color] || DefaultImage
+    : DefaultImage;
+  if (data?.color === 'undefined') {
+    return (
+      <Box bg="rgba(255, 255, 255, 0.85)" p="xl" sx={{ borderRadius: '20px' }}>
+        <StyleTitle1
+          color="#3A3A3A"
+          order={3}
+          weight={800}
+          align="center"
+          sx={{ textShadow: '0px 4px 5px rgba(0, 0, 0, 0.25)' }}
+        >
+          Group Colors
+        </StyleTitle1>
+        <Title
+          color="#3A3A3A"
+          order={3}
+          weight={800}
+          align="center"
+          size="2rem"
+          sx={{ textShadow: '0px 4px 5px rgba(0, 0, 0, 0.25)' }}
+        >
+          ไม่มีข้อมูลจ้า🥲
+          <br />
+          ลองใส่ใหม่นะ
+        </Title>
+      </Box>
+    );
+  }
   return (
     <Box bg="rgba(255, 255, 255, 0.85)" p="xl" sx={{ borderRadius: '20px' }}>
-      <Title
+      <StyleTitle2
         color="#3A3A3A"
         order={3}
         weight={800}
@@ -19,18 +111,20 @@ function SearchResult({ data }: SearchResultProps) {
         sx={{ textShadow: '0px 4px 5px rgba(0, 0, 0, 0.25)' }}
       >
         Group Colors
-      </Title>
-      <img src={TurtleImage} aria-hidden alt="Turtle Image" />
-      <Title
-        color={data?.colorCode ?? 'white'}
-        order={3}
-        weight={800}
-        align="center"
-        size="4rem"
-        sx={{ textShadow: '0px 4px 5px rgba(0, 0, 0, 0.25)' }}
-      >
-        {data?.color}
-      </Title>
+      </StyleTitle2>
+      <Container>
+        <Title
+          color={data?.colorCode ?? '#313866'}
+          order={3}
+          weight={800}
+          align="center"
+          size="3rem"
+          sx={{ textShadow: '0px 4px 5px rgba(0, 0, 0, 0.25)' }}
+        >
+          {data?.color}
+        </Title>
+        <ResponsiveImage src={colorImageSrc} aria-hidden alt="Color Image" />
+      </Container>
     </Box>
   );
 }

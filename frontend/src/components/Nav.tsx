@@ -1,36 +1,72 @@
-import { RxHamburgerMenu } from 'react-icons/rx';
 import styled from 'styled-components';
 
-import { List, Menu, Text } from '@mantine/core';
-
 const NavContainer = styled.div`
-  padding: 2rem;
+  // padding: 2rem;
+  padding: 1rem 2rem;
   position: fixed;
   top: 0;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: top;
   width: 100%;
   font-size: 1.5rem;
 `;
 
-const StyledList = styled(List)`
-  list-style: none;
-  display: flex;
-  gap: 2rem;
+const LogoImage = styled.img`
+  width: 20vw;
+  height: auto;
+
+  /* iPhone */
+  @media (max-width: 375px) {
+    min-width: 120px;
+    max-width: 60vw;
+  }
+
+  /* Between iPhone and iPad */
+  @media (min-width: 376px) and (max-width: 767px) {
+    min-width: 150px; 
+    max-width: 40vw; 
+
+  /* iPad */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    min-width: 180px;
+    max-width: 30vw;
+  }
+
+  /* PC */
+  @media (min-width: 1025px) {
+    min-width: 200px;
+    max-width: 20vw;
+  }
+`;
+
+const FacultyLogo = styled.img`
+  max-height: 3vw;
+  max-width: auto;
+
+  @media (min-width: 1025px) {
+    max-height: 3vw;
+    max-width: auto;
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    max-height: 4vw;
+    max-width: auto;
+  }
   @media (max-width: 768px) {
     display: none;
   }
 `;
 
-const StyleLink = styled.a`
-  text-decoration: none;
-  color: black;
-`;
-
-const HamburgerContainer = styled('div')`
-  @media (min-width: 768px) {
+const FacultyLogoShort = styled.img`
+  @media (min-width: 1025px) {
     display: none;
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    max-height: 8vw;
+    max-width: auto;
   }
 `;
 
@@ -38,37 +74,9 @@ function Nav({ children }: { children: React.ReactNode }) {
   return (
     <>
       <NavContainer>
-        <Text>Code of Conduct</Text>
-        <StyledList>
-          <List.Item>
-            <StyleLink href="/home">Home</StyleLink>
-          </List.Item>
-          <List.Item>
-            <StyleLink href="/about">About Us</StyleLink>
-          </List.Item>
-          <List.Item>
-            <StyleLink href="/schedule">Schedule</StyleLink>
-          </List.Item>
-        </StyledList>
-        <Menu>
-          <Menu.Target>
-            <HamburgerContainer>
-              <RxHamburgerMenu />
-            </HamburgerContainer>
-          </Menu.Target>
-
-          <Menu.Dropdown>
-            <Menu.Item>
-              <StyleLink href="/home">Home</StyleLink>
-            </Menu.Item>
-            <Menu.Item>
-              <StyleLink href="/about">About Us</StyleLink>
-            </Menu.Item>
-            <Menu.Item>
-              <StyleLink href="/schedule">Schedule</StyleLink>
-            </Menu.Item>
-          </Menu.Dropdown>
-        </Menu>
+        <LogoImage src="../../public/logo.png" />
+        <FacultyLogo src="../../public/sitlogo.png" />
+        <FacultyLogoShort src="../../public/sitlogo_short.png" />
       </NavContainer>
       {children}
     </>
