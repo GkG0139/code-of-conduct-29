@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import Logo from '../assets/images/logo.png';
+import SitLogo from '../assets/images/sitlogo.png';
+import SitLogoShort from '../assets/images/sitlogo_short.png';
 
 const NavContainer = styled.div`
   // padding: 2rem;
@@ -74,9 +77,9 @@ function Nav({ children }: { children: React.ReactNode }) {
   return (
     <>
       <NavContainer>
-        <LogoImage src="../../public/logo.png" />
-        <FacultyLogo src="../../public/sitlogo.png" />
-        <FacultyLogoShort src="../../public/sitlogo_short.png" />
+        <LogoImage src={Logo} alt="Code of Aquatia Logo" />
+        <FacultyLogo src={SitLogo} alt="SIT Logo" />
+        <FacultyLogoShort src={SitLogoShort} alt="SIT Logo Short" />
       </NavContainer>
       {children}
     </>
