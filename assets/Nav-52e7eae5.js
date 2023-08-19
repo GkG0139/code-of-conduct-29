@@ -1,4 +1,4 @@
-import{s as t,j as i}from"./index-04971815.js";const d=t.div`
+import{s as t,j as i}from"./index-373707d7.js";const o="/code-of-conduct-29/assets/logo-24806036.png",d="/code-of-conduct-29/assets/sitlogo-4ec81818.png",n="/code-of-conduct-29/assets/sitlogo_short-cfbe5d9c.png",e=t.div`
   // padding: 2rem;
   padding: 1rem 2rem;
   position: fixed;
@@ -34,7 +34,7 @@ import{s as t,j as i}from"./index-04971815.js";const d=t.div`
     min-width: 200px;
     max-width: 20vw;
   }
-`,n=t.img`
+`,x=t.img`
   max-height: 3vw;
   max-width: auto;
 
@@ -49,7 +49,7 @@ import{s as t,j as i}from"./index-04971815.js";const d=t.div`
   @media (max-width: 768px) {
     display: none;
   }
-`,x=t.img`
+`,h=t.img`
   @media (min-width: 1025px) {
     display: none;
   }
@@ -60,4 +60,4 @@ import{s as t,j as i}from"./index-04971815.js";const d=t.div`
     max-height: 8vw;
     max-width: auto;
   }
-`;function h({children:a}){return i.jsxs(i.Fragment,{children:[i.jsxs(d,{children:[i.jsx(m,{src:"../../public/logo.png"}),i.jsx(n,{src:"../../public/sitlogo.png"}),i.jsx(x,{src:"../../public/sitlogo_short.png"})]}),a]})}export{h as default};
+`;function w({children:a}){return i.jsxs(i.Fragment,{children:[i.jsxs(e,{children:[i.jsx(m,{src:o,alt:"Code of Aquatia Logo"}),i.jsx(x,{src:d,alt:"SIT Logo"}),i.jsx(h,{src:n,alt:"SIT Logo Short"})]}),a]})}export{w as default};
