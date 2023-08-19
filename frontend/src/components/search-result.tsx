@@ -43,12 +43,15 @@ const ResponsiveImage = styled.img`
   width: auto;
   height: auto;
 
-  @media (max-width: 1024px) {
-    max-width: 90%;
-  }
+  animation: moving 1s infinite alternate;
+  filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.40));
 
-  @media (max-width: 767px) {
-    max-width: 80%;
+  @keyframes moving {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-10px);
   }
 `;
 
@@ -123,7 +126,12 @@ function SearchResult({ data }: SearchResultProps) {
         >
           {data?.color}
         </Title>
-        <ResponsiveImage src={colorImageSrc} aria-hidden alt="Color Image" />
+        <ResponsiveImage
+          src={colorImageSrc}
+          aria-hidden
+          alt="Color Image"
+          style={data?.color === 'WaveBlue' ? { maxHeight: '12rem' } : {}}
+        />
       </Container>
     </Box>
   );
