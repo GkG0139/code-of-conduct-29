@@ -36,12 +36,28 @@ const StyleTitle1 = styled(Title)`
 const StyleTitle2 = styled(Title)`
   color: #313866;
   font-size: 2rem;
+
+  @media (max-width: 820px) {
+    font-size: 1.5rem;
+  }
+`;
+
+const StyleTitle3 = styled(Title)`
+  font-size: 3rem;
+
+  @media (max-width: 820px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const ResponsiveImage = styled.img`
   max-width: 18rem;
   width: auto;
   height: auto;
+
+  @media (max-width: 820px) {
+    max-width: 15rem;
+  }
 
   animation: moving 1s infinite alternate;
   filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.40));
@@ -116,16 +132,15 @@ function SearchResult({ data }: SearchResultProps) {
         Group Colors
       </StyleTitle2>
       <Container>
-        <Title
+        <StyleTitle3
           color={data?.colorCode ?? '#313866'}
           order={3}
           weight={800}
           align="center"
-          size="3rem"
           sx={{ textShadow: '0px 4px 5px rgba(0, 0, 0, 0.25)' }}
         >
           {data?.color}
-        </Title>
+        </StyleTitle3>
         <ResponsiveImage
           src={colorImageSrc}
           aria-hidden
