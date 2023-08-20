@@ -1,4 +1,4 @@
-import{s as t,j as i}from"./index-373707d7.js";const o="/code-of-conduct-29/assets/logo-24806036.png",d="/code-of-conduct-29/assets/sitlogo-4ec81818.png",n="/code-of-conduct-29/assets/sitlogo_short-cfbe5d9c.png",e=t.div`
+import{s as t,j as i}from"./index-9d171072.js";const o="/code-of-conduct-29/assets/logo-24806036.png",d="/code-of-conduct-29/assets/sitlogo-4ec81818.png",n="/code-of-conduct-29/assets/sitlogo_short-cfbe5d9c.png",e=t.div`
   // padding: 2rem;
   padding: 1rem 2rem;
   position: fixed;
